@@ -1,4 +1,4 @@
-from telebot import types
+from telebot import TeleBot
 from constants import Token
 from todo.controllers import Controller
 

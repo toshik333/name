@@ -3,9 +3,9 @@ from models import TaskModel
 
 class Controller:
     def __init__(self, bot):
-        self.bot:telebot.TeleBot = bot
+        self.bot: telebot.TeleBot = bot
 
-    def add_task_handker(message):
+    def add_task_handler(self, message):
         TaskModel.add_task(message.chat.id, message.text)
         self.bot.reply_to(message, "Задача добавлена")
     
@@ -17,4 +17,4 @@ class Controller:
         @self.bot.message_handler(commands = ['add'])
         def add_task(message):
             msg = self.bot.reply_to(message, "Zadacha")
-            self.bot.register_next_step_handler(msg, )
+            self.bot.register_next_step_handler(msg, self.add_task_handler)
